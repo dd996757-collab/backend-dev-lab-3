@@ -11,12 +11,9 @@
     "test": "node --test"
   },
   "engines": {
-    "node": "22.x"
+    "node": ">=22.5.0"
   },
   "dependencies": {
-    "express": "^5.1.0",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7"
+    "express": "^5.1.0"
   }
 }
-
