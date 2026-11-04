@@ -1,24 +1,22 @@
-const { DatabaseSync } = require('node:sqlite');
+const sqlite3 = require('better-sqlite3')
+const path = require('path')
 
-function createDatabase(databasePath) {
-  const database = new DatabaseSync(databasePath);
+const dbPath = path.join(__dirname, '..', 'books.db')
+const database = new sqlite3(dbPath)
 
+const createDatabase = () => {
   database.exec(`
-    INSERT INTO books (title, author, price)
-VALUES
-('Wings of Fire', 'A. P. J. Abdul Kalam', 250),
-('The Alchemist', 'Paulo Coelho', 299),
-('Atomic Habits', 'James Clear', 450),
-('Ikigai', 'Hector Garcia', 199),
-('Deep Work', 'Cal Newport', 350),
-('Rich Dad Poor Dad', 'Robert Kiyosaki', 399),
-('The Psychology of Money', 'Morgan Housel', 499),
-('Think and Grow Rich', 'Napoleon Hill', 299),
-('The Power of Habit', 'Charles Duhigg', 320),
-('Zero to One', 'Peter Thiel', 280);
-  `);
+    CREATE TABLE IF NOT EXISTS books (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NOT NULL,
+      author TEXT NOT NULL,
+      price REAL NOT NULL
+    );
+  `)
 
-  return database;
+  console.log('Books table created successfully')
 }
 
-module.exports = { createDatabase };
+createDatabase()
+
+module.exports = database
