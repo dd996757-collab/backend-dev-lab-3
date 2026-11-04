@@ -3,7 +3,8 @@
 **Name:** MUDUTHANAPALLY DINESH 
 **Registration number:** 252U1R9101  
 **Section:** CSE-GENAI(2B)
-**Live link:** Not deployed yet
+**Live link:** https://backend-dev-lab3.onrender.com/
+
 
 ## How to run
 
